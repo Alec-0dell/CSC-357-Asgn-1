@@ -2,7 +2,9 @@
 
 int main(int argc, char *argv[])
 {
-    
+    int space_count = 0;
+    int line_count = 0;
+    int character;
     FILE *file;
     if (argc != 2)
     {
@@ -16,6 +18,18 @@ int main(int argc, char *argv[])
         return 1;
     }
 
+    while ((character = fgetc(file)) != EOF)
+    {
+        if (isspace(character))
+        {
+            space_count++;
+        }
+        if (character == '\n'){
+            line_count++;
+        }
+    }
+
     fclose(file);
+    printf("%d %d", space_count, line_count);
     return 0;
 }
