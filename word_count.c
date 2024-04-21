@@ -4,8 +4,7 @@
 
 int main(int argc, char *argv[])
 {
-    int word_count = 1, line_count = 0, byte_count = 0, character, prev_character = 'a';
-
+    int word_count = 0, line_count = 0, byte_count = 0, character, prev_character = 'a';
 
     FILE *file = stdin;
 
@@ -15,9 +14,11 @@ int main(int argc, char *argv[])
         return 1;
     }
 
-    if(argc == 2){
+    if (argc == 2)
+    {
         file = fopen(argv[1], "r");
-        if(!file){
+        if (!file)
+        {
             printf("Error opening file '%s'\n", argv[1]);
             return 1;
         }
@@ -27,7 +28,8 @@ int main(int argc, char *argv[])
     {
         if (isspace(character))
         {
-            if(!isspace(prev_character)){
+            if (!isspace(prev_character))
+            {
                 word_count++;
             }
         }
@@ -39,7 +41,12 @@ int main(int argc, char *argv[])
         prev_character = character;
     }
 
-    fclose(file);
-    printf("%d %d %d\n",  line_count, word_count, byte_count);
+    if (file != stdin)
+    {
+        fclose(file);
+    }
+
+    printf("%d %d %d\n", line_count, word_count, byte_count);
+
     return 0;
 }
