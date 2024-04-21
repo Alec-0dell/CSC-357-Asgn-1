@@ -4,7 +4,7 @@
 
 int main(int argc, char *argv[])
 {
-    int word_count = 0, line_count = 0, byte_count = 0, character, prev_character = 'a';
+    int word_count = 0, line_count = 0, byte_count = 0, character, prev_character = ' ';
 
     FILE *file = stdin;
 
